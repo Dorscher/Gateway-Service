@@ -1,0 +1,21 @@
+
+server:
+  port: 8082
+  
+spring:
+  application:
+    name: Gateway-Service
+  cloud:
+    gateway:
+      routes:
+      - id: ItemCollection-Service
+        uri: lb://ItemCollection-Service
+        predicates:
+        - Path=/item-controller/**
+    
+eureka:
+  client:
+    service-url:
+        defaultZone: http://localhost:8083/eureka
+
+        
